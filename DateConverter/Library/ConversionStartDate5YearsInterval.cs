@@ -10,9 +10,17 @@ namespace DateConverter.Core.Library
         {
             try
             {
-                if (english_date.Year >= 2034)
-                    //  return Tuple.Create(new int[] { 2034 }, new int[] { 2090, 09, 16 }, 0);
-                    throw new Exception("English date must be between 1944 and 2035.");
+                if (english_date.Year >= 2045)
+                    throw new Exception("English date must be between 1944 and 2045.");
+
+                else if (english_date.Year >= 2044)
+                    return Tuple.Create(new int[] { 2044 }, new int[] { 2100, 09, 16 }, 1);
+
+                else if (english_date.Year >= 2039)
+                    return Tuple.Create(new int[] { 2039 }, new int[] { 2095, 09, 16 }, 1);
+
+                else if (english_date.Year >= 2034)
+                    return Tuple.Create(new int[] { 2034 }, new int[] { 2090, 09, 16 }, 1);
 
                 else if (english_date.Year >= 2029)
                     return Tuple.Create(new int[] { 2029 }, new int[] { 2085, 09, 16 }, 1);
@@ -86,8 +94,14 @@ namespace DateConverter.Core.Library
         {
             try
             {
-                if (nep_year >= 2090)
-                    throw new Exception("Nepali date must be between 2000 and 2090.");
+                if (nep_year >= 2100)
+                    throw new Exception("Nepali date must be between 2000 and 2100.");
+
+                else if (nep_year >= 2095)
+                    return Tuple.Create(2095, new int[] { 2038, 04, 13 });
+
+                else if (nep_year >= 2090)
+                    return Tuple.Create(2090, new int[] { 2033, 04, 13 });
 
                 else if (nep_year >= 2085)
                     return Tuple.Create(2085, new int[] { 2028, 04, 12 });
@@ -144,7 +158,7 @@ namespace DateConverter.Core.Library
                     return Tuple.Create(2000, new int[] { 1943, 04, 13 });
 
                 else
-                    throw new Exception("Nepali Date must be between 2000 and 2090");
+                    throw new Exception("Nepali Date must be between 2000 and 2100");
             }
             catch (Exception)
             {

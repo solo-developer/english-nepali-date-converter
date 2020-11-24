@@ -4,12 +4,12 @@ using System.Text;
 
 namespace DateConverter.Core.Library
 {
-    public class DateConverter : iDateConverter
+    public sealed class DateConverter : iDateConverter
     {
-        iConversionStartDateData conversionStartDateData;
-        iDateFunctions dateFunctions;
-        iNepaliDateData nepaliDateData;
-        public DateConverter(iConversionStartDateData _conversionStartDateData, iDateFunctions _dateFunctions,iNepaliDateData _nepaliDateData)
+        private readonly iConversionStartDateData conversionStartDateData;
+        private readonly iDateFunctions dateFunctions;
+        private readonly iNepaliDateData nepaliDateData;
+        public DateConverter(iConversionStartDateData _conversionStartDateData, iDateFunctions _dateFunctions, iNepaliDateData _nepaliDateData)
         {
             conversionStartDateData = _conversionStartDateData;
             dateFunctions = _dateFunctions;
@@ -46,7 +46,7 @@ namespace DateConverter.Core.Library
 
             //get starting nepali and english date for conversion 
             //Initialize english date
-            Tuple<int, int[]> initializationDates =conversionStartDateData.getClosestEnglishDateAndNepaliDateToAD(yy);
+            Tuple<int, int[]> initializationDates = conversionStartDateData.getClosestEnglishDateAndNepaliDateToAD(yy);
 
             int nepali_init_date = initializationDates.Item1;
             int[] english_init_date = initializationDates.Item2;
@@ -72,18 +72,18 @@ namespace DateConverter.Core.Library
 
             //  k = 0;
             k = nepali_init_date;
-            
 
-            int[] month = new int[]{0,31,28,31,30,31,30,31,31,30,31,30,31};
 
-            int[] lmonth = new int[]{0,31,29,31,30,31,30,31,31,30,31,30,31};
+            int[] month = new int[] { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+            int[] lmonth = new int[] { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
             while ((i < (yy - def_nyy)))
             {
                 j = 1;
                 while ((j <= 12))
                 {
-                    total_nDays +=nepaliDateData.getLastDayOfMonthNep(k, j);
+                    total_nDays += nepaliDateData.getLastDayOfMonthNep(k, j);
                     j += 1;
                 }
 
@@ -138,7 +138,7 @@ namespace DateConverter.Core.Library
             eng_date.engYear = y;
             eng_date.dayName = new DateTime(y, m, total_eDays).DayOfWeek.ToString();
             //1 is added since we consider first day to be 1 while it is actually 0
-            eng_date.dayNumber = (int)new DateTime(y, m, total_eDays).DayOfWeek+1;
+            eng_date.dayNumber = (int)new DateTime(y, m, total_eDays).DayOfWeek + 1;
             eng_date.setFormattedDate(y, m, total_eDays);
             return eng_date;
         }
@@ -206,7 +206,7 @@ namespace DateConverter.Core.Library
             //Count nepali date from array
             while ((!(total_eDays == 0)))
             {
-                a =nepaliDateData.getLastDayOfMonthNep(i, j);
+                a = nepaliDateData.getLastDayOfMonthNep(i, j);
                 total_nDays += 1;
 
                 if ((total_nDays > a))
@@ -228,16 +228,16 @@ namespace DateConverter.Core.Library
                 }
                 total_eDays -= 1;
             }
-            
+
             NepaliDate nep_date = new NepaliDate();
             nep_date.npDay = total_nDays;
             nep_date.npDaysInMonth = a;
             nep_date.npMonth = m;
             nep_date.npYear = y;
             //1 is added since we are using Sunday as 1 although it is 0
-            nep_date.dayNumber= (int)gDate.DayOfWeek+1;
-            nep_date.dayName= gDate.DayOfWeek.ToString();
-            nep_date.setFormattedDate(y, m, total_nDays,date_format);
+            nep_date.dayNumber = (int)gDate.DayOfWeek + 1;
+            nep_date.dayName = gDate.DayOfWeek.ToString();
+            nep_date.setFormattedDate(y, m, total_nDays, date_format);
             return nep_date;
         }
     }

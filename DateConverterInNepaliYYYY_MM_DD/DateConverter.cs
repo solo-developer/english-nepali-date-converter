@@ -73,7 +73,6 @@ namespace DateConverterInNepaliYYYY_MM_DD
             {
                 year = year - 2000;
             }
-            //The following data allows the coversion between the range 1944-2033 (AD) only
 
             bs[0] = new int[]{
             2000,
@@ -1531,6 +1530,26 @@ namespace DateConverterInNepaliYYYY_MM_DD
             30
         };
 
+            bs[91] = new int[] { 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30 };
+
+            bs[92] = new int[] { 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30 };
+
+            bs[93] = new int[] { 31, 32, 31, 31, 31, 31, 30, 29, 30, 29, 30, 31 };
+
+            bs[94] = new int[] { 31, 31, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30 };
+
+            bs[95] = new int[] { 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30 };
+
+            bs[96] = new int[] { 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30 };
+
+            bs[97] = new int[] { 31, 32, 31, 31, 31, 31, 30, 30, 29, 30, 30, 30 };
+
+            bs[98] = new int[] { 31, 31, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30 };
+
+            bs[99] = new int[] { 31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30 };
+
+            bs[100] = new int[] { 31, 32, 31, 32, 30, 31, 30, 29, 30, 29, 30, 30 };
+
             return (bs[year][month]);
         }
 
@@ -1869,7 +1888,7 @@ namespace DateConverterInNepaliYYYY_MM_DD
             def_nyy = nepali_init_date[0];
             def_nmm = nepali_init_date[1];
             def_ndd = nepali_init_date[2];
-          
+
             //Initializations
             total_eDays = 0;
             total_nDays = 0;
@@ -2006,13 +2025,21 @@ namespace DateConverterInNepaliYYYY_MM_DD
         /// </summary>
         /// <param name="english_date"></param>
         /// <returns></returns>
-        public Tuple<int[], int[],int> getClosestEnglishDateAndNepaliDate(DateTime english_date)
+        public Tuple<int[], int[], int> getClosestEnglishDateAndNepaliDate(DateTime english_date)
         {
             try
             {
-                if (english_date.Year >= 2034)
-                    //  return Tuple.Create(new int[] { 2034 }, new int[] { 2090, 09, 16 }, 0);
-                    throw new Exception("English date must be between 1944 and 2035.");
+                if (english_date.Year >= 2045)
+                    throw new Exception("English date must be between 1944 and 2045.");
+
+                else if (english_date.Year >= 2044)
+                    return Tuple.Create(new int[] { 2044 }, new int[] { 2100, 09, 16 }, 1);
+
+                else if (english_date.Year >= 2039)
+                    return Tuple.Create(new int[] { 2039 }, new int[] { 2095, 09, 16 }, 1);
+
+                else if (english_date.Year >= 2034)
+                    return Tuple.Create(new int[] { 2034 }, new int[] { 2090, 09, 16 }, 1);
 
                 else if (english_date.Year >= 2029)
                     return Tuple.Create(new int[] { 2029 }, new int[] { 2085, 09, 16 }, 1);
@@ -2088,8 +2115,14 @@ namespace DateConverterInNepaliYYYY_MM_DD
         {
             try
             {
-                if (nep_year >= 2090)
-                    throw new Exception("Nepali date must be between 2000 and 2090.");
+                if (nep_year >= 2100)
+                    throw new Exception("Nepali date must be between 2000 and 2100.");
+
+                else if (nep_year >= 2095)
+                    return Tuple.Create(2095, new int[] { 2038, 04, 13 });
+
+                else if (nep_year >= 2090)
+                    return Tuple.Create(2090, new int[] { 2033, 04, 13 });
 
                 else if (nep_year >= 2085)
                     return Tuple.Create(2085, new int[] { 2028, 04, 12 });
@@ -2146,7 +2179,7 @@ namespace DateConverterInNepaliYYYY_MM_DD
                     return Tuple.Create(2000, new int[] { 1943, 04, 13 });
 
                 else
-                    throw new Exception("Nepali Date must be between 2000 and 2090");
+                    throw new Exception("Nepali Date must be between 2000 and 2100");
             }
             catch (Exception)
             {
