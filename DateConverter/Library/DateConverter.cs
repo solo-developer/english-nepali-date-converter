@@ -145,7 +145,7 @@ namespace DateConverter.Core.Library
 
         public NepaliDate ToBS(DateTime gDate, NepaliDate.DateFormats date_format = NepaliDate.DateFormats.mDy)
         {
-
+            gDate = gDate.Date;
             //Breaking given english date
             int yy = 0;
             int mm = 0;
