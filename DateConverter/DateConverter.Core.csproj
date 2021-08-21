@@ -5,6 +5,9 @@
     <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
     <ApplicationIcon />
     <StartupObject />
+    <Authors>Niroj Dahal</Authors>
+    <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

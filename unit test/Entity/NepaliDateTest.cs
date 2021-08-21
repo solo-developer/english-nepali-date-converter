@@ -1,8 +1,7 @@
 ﻿using DateConverter.Core;
+using DateConverter.Core.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace unit_test.Entity
 {
@@ -33,21 +32,21 @@ namespace unit_test.Entity
         [TestMethod]
         public void testFormattedNepaliDateInMDYFormat()
         {
-            nepaliDate.setFormattedDate(2074, 01, 25, NepaliDate.DateFormats.mDy);
+            nepaliDate.setFormattedDate(2074, 01, 25, DateFormats.mDy);
             Assert.AreEqual("01-25-2074", nepaliDate.getFormattedDate());
         }
 
         [TestMethod]
         public void testFormattedNepaliDateInDMYFormat()
         {
-            nepaliDate.setFormattedDate(2074, 01, 25, NepaliDate.DateFormats.dMy);
+            nepaliDate.setFormattedDate(2074, 01, 25, DateFormats.dMy);
             Assert.AreEqual("25-01-2074", nepaliDate.getFormattedDate());
         }
 
         [TestMethod]
         public void testFormattedNepaliDateInYMDFormat()
         {
-            nepaliDate.setFormattedDate(2074, 01, 25, NepaliDate.DateFormats.yMd);
+            nepaliDate.setFormattedDate(2074, 01, 25, DateFormats.yMd);
             Assert.AreEqual("2074-01-25", nepaliDate.getFormattedDate());
         }
     }

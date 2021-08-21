@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using DateConverter.Core.Rough_Library;
 
 namespace DateConverterInNepaliYYYY_MM_DD

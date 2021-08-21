@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DateConverter.Core.Enums;
+using System;
 
 namespace DateConverter.Core.Library
 {
@@ -143,7 +142,7 @@ namespace DateConverter.Core.Library
             return eng_date;
         }
 
-        public NepaliDate ToBS(DateTime gDate, NepaliDate.DateFormats date_format = NepaliDate.DateFormats.mDy)
+        public NepaliDate ToBS(DateTime gDate, DateFormats date_format = DateFormats.mDy)
         {
             gDate = gDate.Date;
             //Breaking given english date
