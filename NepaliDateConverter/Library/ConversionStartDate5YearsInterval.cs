@@ -10,8 +10,8 @@ namespace DateConverter.Core.Library
         {
             try
             {
-                if (english_date.Year >= 2045)
-                    throw new Exception("English date must be between 1944 and 2045.");
+                if (english_date.Year > 2065)
+                    throw new Exception("English date must be between 1914 and 2065.");
 
                 else if (english_date.Year >= 2044)
                     return Tuple.Create(new int[] { 2044 }, new int[] { 2100, 09, 16 }, 1);
@@ -77,7 +77,7 @@ namespace DateConverter.Core.Library
                 else if (english_date.Year >= 1944)
                     return Tuple.Create(new int[] { 1944 }, new int[] { 2000, 09, 16 }, 6);
                 else
-                    throw new Exception("English date must be between 1944 and 2035.");
+                    throw new Exception("English date must be between 1944 and 2065.");
             }
             catch (Exception)
             {
@@ -94,8 +94,8 @@ namespace DateConverter.Core.Library
         {
             try
             {
-                if (nep_year >= 2100)
-                    throw new Exception("Nepali date must be between 2000 and 2100.");
+                if (nep_year > 2122)
+                    throw new Exception("Nepali date must be between 1970 and 2122.");
 
                 else if (nep_year >= 2095)
                     return Tuple.Create(2095, new int[] { 2038, 04, 13 });
@@ -158,7 +158,7 @@ namespace DateConverter.Core.Library
                     return Tuple.Create(2000, new int[] { 1943, 04, 13 });
 
                 else
-                    throw new Exception("Nepali Date must be between 2000 and 2100");
+                    throw new Exception("Nepali Date must be between 2000 and 2122");
             }
             catch (Exception)
             {
