@@ -142,5 +142,14 @@ namespace unit_test.Services
             nep_date = "12/10/2000";
             Assert.AreEqual("wednesday", dc.ToAD(nep_date).dayName.ToLower());
         }
+
+        [TestMethod]
+        public void testNepaliYear2122IsValidRangeDuringConversion()
+        {
+            EnglishDate english_date = new EnglishDate();
+
+            string nep_date = "11/10/2121";
+            dc.ToAD(nep_date);
+        }
     }
 }
